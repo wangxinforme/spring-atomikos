@@ -30,8 +30,6 @@ public class MailAddressServiceImpl implements MailAddressService {
     private MailAddressMapper mailAddressMapper;
 
     @Override
-    // @DataSource(DataSourceEnum.MASTER)
-    // @DataSource(DataSourceEnum.SLAVE)
     public boolean addMailAddress(MailAddress mailAddress) {
         try {
             if (mailAddress == null)
