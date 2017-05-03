@@ -7,3 +7,5 @@
 /*.db
 /bin
 /logs
+/*.lck
+/60
