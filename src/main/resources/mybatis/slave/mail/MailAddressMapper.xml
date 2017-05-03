@@ -103,6 +103,12 @@
 		</set>
 		WHERE ID = #{id}
 	</update>
+	
+	<update id="updateFail" parameterType="com.wangxin.entity.mail.MailAddress">
+		UPDATE RPT_MAIL_ADDRESS_T
+		UPDATE_TIME = 1now()
+		WHERE ID = #{id}
+	</update>
 
 	<delete id="delete" parameterType="string">
 		DELETE FROM RPT_MAIL_ADDRESS_T WHERE ID #{id}

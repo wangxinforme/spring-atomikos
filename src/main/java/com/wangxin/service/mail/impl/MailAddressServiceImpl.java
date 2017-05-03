@@ -30,8 +30,8 @@ public class MailAddressServiceImpl implements MailAddressService {
     private MailAddressMapper mailAddressMapper;
 
     @Override
-//    @DataSource(DataSourceEnum.MASTER)
-    @DataSource(DataSourceEnum.SLAVE)
+    // @DataSource(DataSourceEnum.MASTER)
+    // @DataSource(DataSourceEnum.SLAVE)
     public boolean addMailAddress(MailAddress mailAddress) {
         try {
             if (mailAddress == null)
@@ -41,9 +41,10 @@ public class MailAddressServiceImpl implements MailAddressService {
             mailAddress.setIsDel(Constants.IS_DEL_U);
             mailAddress.setVersionNum(1l);
 
-            int count = mailAddressMapper.insert(mailAddress);
-            System.err.println(count);
-             mailAddressMapper.insert(mailAddress);
+            int count = insertMailAddress(mailAddress);
+            System.err.println("insert count=" + count);
+            int cc = updateMailAddress("01");
+            System.err.println("update count=" + cc);
             if (count == 1)
                 return true;
             return false;
@@ -51,6 +52,22 @@ public class MailAddressServiceImpl implements MailAddressService {
             log.error("收件配置信息保存异常.{}", e.getLocalizedMessage());
             throw new BusinessException("收件配置信息保存异常");
         }
+    }
+
+    @DataSource(DataSourceEnum.SLAVE)
+    public int insertMailAddress(MailAddress mailAddress) {
+        return mailAddressMapper.insert(mailAddress);
+    }
+
+    @DataSource(DataSourceEnum.MASTER)
+    public int updateMailAddress(String mailType) {
+        List<MailAddress> list = mailAddressMapper.findMailAddressByMailType(mailType);
+        if (CollectionUtils.isNotEmpty(list)) {
+            MailAddress ma = list.iterator().next();
+            int count = mailAddressMapper.updateFail(ma);
+            return count;
+        }
+        return 0;
     }
 
     @Override
@@ -88,9 +105,6 @@ public class MailAddressServiceImpl implements MailAddressService {
 
     @Override
     public PageInfo<MailAddress> findMailAddessByPage(Integer pageNum, String mailType) {
-
-        // request: url?pageNum=1&pageSize=10
-        // 支持 ServletRequest,Map,POJO 对象，需要配合 params 参数
         if (pageNum == null)
             pageNum = 1;
         PageHelper.startPage(pageNum, Constants.PAGE_SIZE);

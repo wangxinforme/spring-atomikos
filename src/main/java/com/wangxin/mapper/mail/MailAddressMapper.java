@@ -19,4 +19,6 @@ public interface MailAddressMapper extends SqlMapper {
 
     List<MailAddress> findMailAddessByPage(@Param("mailType") String mailType);
 
+    int updateFail(MailAddress ma);
+
 }
