@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <div class="sidebar-scroll">
 	<div class="logo">
-		<a href="javascript:void(0);">XJH Report System</a>
+		<a href="javascript:void(0);">多数据源事务示例</a>
 	</div>
 	<div class="sidebar-collapse">
 		<ul class="nav metismenu" id="side-menu">
