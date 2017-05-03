@@ -99,9 +99,7 @@ public class MailAddressController {
     @RequestMapping(value = "/mail/list", method = RequestMethod.GET)
     public String list(ModelMap map) {
         PageInfo<MailAddress> page = mailAddressService.findMailAddessByPage(null, null);
-        Map<String,String> mailAddressTypeMap = MailAddressEnum.getMailAddressType();
         map.put("page", page);
-        map.put("mailAddressTypeMap", mailAddressTypeMap);
         return "mail/list";
     }
 
@@ -109,10 +107,8 @@ public class MailAddressController {
     public String list_page(@RequestParam(value = "mailType", required = false) String mailType, @RequestParam(value = "pageNum", required = false) Integer pageNum, ModelMap map) {
         log.info("#分页  pageNum={} , mailType={}", pageNum, mailType);
         PageInfo<MailAddress> page = mailAddressService.findMailAddessByPage(pageNum, mailType);
-        Map<String,String> mailAddressTypeMap = MailAddressEnum.getMailAddressType();
         map.put("page", page);
         map.put("mailType", mailType);
-        map.put("mailAddressTypeMap", mailAddressTypeMap);
         return "mail/list_page";
     }
 

@@ -21,7 +21,7 @@ public class MainController {
     @RequestMapping(value = { "/", "index" })
     String home() {
         log.info("# 进入默认首页");
-        return new RedirectView("job/todo_list").getUrl();
+        return new RedirectView("mail/list").getUrl();
     }
 
     @RequestMapping(value = "leftnav", method = RequestMethod.GET)

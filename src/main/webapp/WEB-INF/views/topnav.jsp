@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags"%>
 <!---顶部状态栏 star-->
 <div class="row ">
 	<nav class="navbar navbar-fixed-top" role="navigation" style="margin-bottom: 0">
@@ -7,7 +6,7 @@
 			<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
 		</div>
 		<ul class="nav navbar-top-links navbar-right notification-menu">
-			<li class="user-dropdown"><a href="#" class="btn  dropdown-toggle" data-toggle="dropdown"> <shiro:principal /> <span class="caret"></span>
+			<li class="user-dropdown"><a href="#" class="btn  dropdown-toggle" data-toggle="dropdown"> wangxin<span class="caret"></span>
 			</a>
 				<ul class="dropdown-menu dropdown-menu-usermenu pull-right">
 					<!-- <li><a href="#"><i class="fa fa-cog"></i> 修改密码</a></li> -->

@@ -4,10 +4,8 @@ import java.util.Calendar;
 
 import javax.servlet.ServletContext;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 
@@ -22,9 +20,6 @@ public class ApplicationContext implements ServletContextAware {
 
     private static final Logger log = LoggerFactory.getLogger(ApplicationContext.class);
 
-    @Value("${xjhrpt.domain}")
-    private String xjhrptDomain;
-
     /**
      * 
      * <p>
@@ -37,12 +32,10 @@ public class ApplicationContext implements ServletContextAware {
     @Override
     public void setServletContext(ServletContext context) {
         String datetime = DateUtil.dateToString(Calendar.getInstance().getTime(), DateUtil.fm_yyyyMMddHHmmssSSS);
-        if (StringUtils.isBlank(xjhrptDomain))
-            xjhrptDomain = context.getContextPath();
-        log.info("# version={} , xjhrptDomain={}", datetime, xjhrptDomain);
+        log.info("# version={} , xjhrptDomain={}", datetime, context.getContextPath());
         context.setAttribute("version_css", datetime);
         context.setAttribute("version_js", datetime);
-        context.setAttribute("ctx", xjhrptDomain);
+        context.setAttribute("ctx", context.getContextPath());
     }
 
 }

@@ -61,14 +61,8 @@
 							<div class="ibox-content">
 								<div class="row">
 									<div class="col-sm-4 col-lg-2 col-md-3 m-t-xs">
-										<select class="input-sm form-control input-s-sm inline" id="mailType" name="mailType">
-											<option value="">所有邮件类型</option> <
-											<c:if test="${!empty mailAddressTypeMap && fn:length(mailAddressTypeMap) > 0 }">
-												<c:forEach var="maType" items="${mailAddressTypeMap }">
-													<option value="${maType.key }">${maType.value }</option>
-												</c:forEach>
-											</c:if>
-										</select>
+										
+										<input class="input-sm form-control input-s-sm inline" id="mailType" name="mailType">
 									</div>
 									<div class="form-group col-sm-4 col-lg-3 m-t-xs m-b-none" id="data_5">
 										<div class="input-daterange input-group" id="datepicker">

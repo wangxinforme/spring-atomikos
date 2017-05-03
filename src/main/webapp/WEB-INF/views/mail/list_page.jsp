@@ -21,7 +21,7 @@
 				<c:if test="${!empty page && !empty page.list && fn:length(page.list) > 0 }">
 					<c:forEach var="ma" items="${page.list }">
 						<tr>
-							<td>${mailAddressTypeMap[ma.mailType]}</td>
+							<td>${ma.mailType}</td>
 							<td>${ma.toAddress }</td>
 							<td>${ma.toCc }</td>
 							<td>${ma.toBcc }</td>

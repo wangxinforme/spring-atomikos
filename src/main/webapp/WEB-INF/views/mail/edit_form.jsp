@@ -4,7 +4,7 @@
 <div class="form-group">
 	<label class="col-sm-4 control-label" for="mailType">收件类型 <span class="text-danger">*</span></label>
 	<div class="col-sm-8">
-		<input type="text" id="mailType" name="mailType" value="${mailAddressTypeMap[ma.mailType]}" required class="form-control" disabled="disabled">
+		<input type="text" id="mailType" name="mailType" value="${ma.mailType}" required class="form-control" disabled="disabled">
 	</div>
 </div>
 <div class="form-group">
